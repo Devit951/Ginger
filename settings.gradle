@@ -1,0 +1,2 @@
+include ':app', ':ginger-ui', ':ginger-bottombar'
+rootProject.name='Ginger'
