@@ -8,21 +8,19 @@ import android.widget.LinearLayout
 fun Context.linearLayout(init: LinearLayout.() -> Unit) = LinearLayout(this).apply(init)
 fun Context.verticalLayout(init: LinearLayout.() -> Unit) = linearLayout {
     orientation = LinearLayout.VERTICAL
+    init(this)
 }
 fun Context.frameLayout(init: FrameLayout.() -> Unit) = FrameLayout(this).apply(init)
 
-fun ViewGroup.aFrameLayout(init: FrameLayout.() -> Unit) = context.frameLayout{
-    init(this)
-    addView(this)
+fun <T: ViewGroup> T.aFrameLayout(init: FrameLayout.() -> Unit) = apply {
+    addView(context.frameLayout(init))
 }
 
-fun ViewGroup.aLinearLayout(init: LinearLayout.() -> Unit) = context.linearLayout{
-    init(this)
-    addView(this)
+fun <T: ViewGroup> T.aLinearLayout(init: LinearLayout.() -> Unit) = apply {
+    addView(context.linearLayout(init))
 }
 
-fun ViewGroup.aVerticalLayout(init: LinearLayout.() -> Unit) = context.verticalLayout{
-    init(this)
-    addView(this)
+fun <T: ViewGroup> T.aVerticalLayout(init: LinearLayout.() -> Unit) = apply {
+    addView(context.verticalLayout(init))
 }
 
