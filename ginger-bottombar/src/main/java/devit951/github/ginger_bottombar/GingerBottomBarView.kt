@@ -53,6 +53,7 @@ class GingerBottomBarView @JvmOverloads constructor(
                         if (lastSelectedGingerItemView?.tag != this.tag) {
                             animateOverlayPosition(index, this)
                         }
+                        item.onClickListener.invoke()
                     }
                 })
             }

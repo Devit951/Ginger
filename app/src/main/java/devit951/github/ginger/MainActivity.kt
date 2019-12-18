@@ -2,30 +2,43 @@ package devit951.github.ginger
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.FrameLayout
 import devit951.github.ginger_bottombar.GingerBottomBarView
 import devit951.github.ginger_bottombar.GingerItem
+import devit951.github.ginger_ui.*
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        const val ID_MAIN_ROOT_FRAGMENT = 23
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(FrameLayout(this).apply {
-            layoutParams = FrameLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
-            addView(GingerBottomBarView(context).apply {
-                layoutParams = FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT).apply {
-                    gravity = Gravity.BOTTOM
+        setContentView(frameLayout {
+            aVerticalLayout {
+                aFrameLayout {
+                    id = ID_MAIN_ROOT_FRAGMENT
+                    linearParams(width = matchParent, height = 0){
+                        weight = 1f
+                    }
                 }
-                overlayView.setBackgroundColor(resources.getColor(R.color.colorPrimary))
-                gingerItems = listOf(
-                    GingerItem(android.R.drawable.ic_delete, android.R.string.cancel),
-                    GingerItem(android.R.drawable.ic_dialog_alert, android.R.string.copyUrl),
-                    GingerItem(android.R.drawable.ic_input_add, android.R.string.cut)
-                )
-            })
+                addView(GingerBottomBarView(context).apply {
+                    overlayView.setBackgroundColor(color(R.color.colorPrimary))
+                    gingerItems = listOf(
+                        GingerItem(android.R.drawable.ic_delete, android.R.string.cancel, onClickListener = {
+
+                        }),
+                        GingerItem(android.R.drawable.ic_dialog_alert, android.R.string.copyUrl, onClickListener = {
+
+                        }),
+                        GingerItem(android.R.drawable.ic_input_add, android.R.string.cut, onClickListener = {
+                            replaceFragment(ID_MAIN_ROOT_FRAGMENT, EmptyFragment())
+                        })
+                    )
+                    linearParams(width = matchParent)
+                })
+            }
+            frameParams(width = matchParent, height = matchParent)
         })
     }
 }

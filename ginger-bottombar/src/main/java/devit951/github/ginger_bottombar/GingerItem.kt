@@ -5,5 +5,6 @@ import androidx.annotation.StringRes
 
 data class GingerItem(
     @DrawableRes val iconRes: Int,
-    @StringRes val titleRes: Int
+    @StringRes val titleRes: Int,
+    val onClickListener: () -> Unit
 )
