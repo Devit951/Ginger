@@ -51,9 +51,8 @@ class GingerBottomBarView @JvmOverloads constructor(
                     tvTitle.setText(item.titleRes)
                     setOnClickListener {
                         if (lastSelectedGingerItemView?.tag != this.tag) {
-                            animateOverlayPosition(index, this)
+                            animateOverlayPosition(index, this, item)
                         }
-                        item.onClickListener.invoke()
                     }
                 })
             }
@@ -67,7 +66,11 @@ class GingerBottomBarView @JvmOverloads constructor(
         })
     }
 
-    private fun animateOverlayPosition(index: Int, gingerItemView: GingerItemView) {
+    private fun animateOverlayPosition(
+        index: Int,
+        gingerItemView: GingerItemView,
+        gingerItem: GingerItem
+    ) {
         if (animatorSet == null || !animatorSet!!.isStarted) {
             animatorSet = AnimatorSet().also { animatorSet ->
                 animatorSet.playSequentially(
@@ -84,6 +87,7 @@ class GingerBottomBarView @JvmOverloads constructor(
                     overlayView.scaleValueAnim(0.1f, 1f).apply {
                         doOnEnd {
                             gingerItemView.select()
+                            gingerItem.onClickListener.invoke()
                         }
                     })
                 animatorSet.duration = 200
