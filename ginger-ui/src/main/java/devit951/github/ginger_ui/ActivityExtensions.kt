@@ -19,3 +19,23 @@ fun FragmentActivity.addFragment(containerId: Int, fragment: Fragment, tag: Stri
         add(containerId, fragment, tag)
     }
 }
+
+fun <T: Fragment> FragmentActivity.savedFragment(containerId: Int, tag: String, fragmentToSave: () -> T): T{
+    val savedFragment = supportFragmentManager.findFragmentByTag(tag)
+    return if (savedFragment == null){
+        val fragment = fragmentToSave.invoke()
+        addFragment(containerId, fragment, tag)
+        fragment
+    } else {
+        savedFragment as T
+    }
+}
+
+fun FragmentActivity.autoHideShowFragment(fragment: Fragment){
+    supportFragmentManager.fragments.forEach {
+        fragmentTransaction {
+            hide(it)
+        }
+    }
+    fragmentTransaction { show(fragment) }
+}

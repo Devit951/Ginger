@@ -1,5 +1,6 @@
 package devit951.github.ginger
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import devit951.github.ginger_bottombar.GingerBottomBarView
@@ -26,13 +27,19 @@ class MainActivity : AppCompatActivity() {
                     overlayView.setBackgroundColor(color(R.color.colorPrimary))
                     gingerItems = listOf(
                         GingerItem(android.R.drawable.ic_delete, android.R.string.cancel, onClickListener = {
-
+                            autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "1"){
+                                EmptyFragment(Color.GREEN)
+                            })
                         }),
                         GingerItem(android.R.drawable.ic_dialog_alert, android.R.string.copyUrl, onClickListener = {
-
+                            autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "2"){
+                                EmptyFragment(Color.RED)
+                            })
                         }),
                         GingerItem(android.R.drawable.ic_input_add, android.R.string.cut, onClickListener = {
-                            replaceFragment(ID_MAIN_ROOT_FRAGMENT, EmptyFragment())
+                            autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "3"){
+                                EmptyFragment(Color.BLUE)
+                            })
                         })
                     )
                     linearParams(width = matchParent)
@@ -40,5 +47,10 @@ class MainActivity : AppCompatActivity() {
             }
             frameParams(width = matchParent, height = matchParent)
         })
+        if (savedInstanceState == null) {
+            autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "1"){
+                EmptyFragment(Color.GREEN)
+            })
+        }
     }
 }
