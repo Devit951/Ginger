@@ -1,5 +1,6 @@
 package devit951.github.ginger
 
+import devit951.github.gingerhttpclient.*
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -11,7 +12,12 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun path_is_correct() {
+        assertNotNull(
+            GET("http://api.icndb.com/jokes/{jokeId}").request(
+                HttpRequest()
+                    .add(Path("jokeId", "15"))
+            ).also { response -> println(response.body) }
+        )
     }
 }
