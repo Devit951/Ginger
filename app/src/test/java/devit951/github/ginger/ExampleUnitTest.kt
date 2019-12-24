@@ -20,4 +20,15 @@ class ExampleUnitTest {
             ).also { response -> println(response.body) }
         )
     }
+
+    @Test
+    fun query_is_correct() {
+        assertNotNull(
+            GET("http://api.icndb.com/jokes/random").request(
+                HttpRequest()
+                    .add(Query("firstName", "John"))
+                    .add(Query("lastName", "Doe"))
+            ).also { response -> println(response.body) }
+        )
+    }
 }
