@@ -15,7 +15,6 @@ class Async(private val httpMethod: AbstractHttpMethod) {
     fun request(req: HttpRequest, onResponse: (HttpResponse) -> Unit, onError: (Throwable) -> Unit) {
         futureRequest = ThreadPoolConfig.threadPool.submit {
             try {
-                Thread.sleep(5_000)
                 val response = httpMethod.request(req)
                 onResponse(response)
             } catch (t: Throwable) {
