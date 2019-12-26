@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Ginger</string>
+    <string name="jokes">Jokes</string>
+    <string name="next_joke">Next joke</string>
 </resources>

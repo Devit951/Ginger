@@ -3,6 +3,7 @@ package devit951.github.ginger
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import devit951.github.ginger.jokes.JokeFragment
 import devit951.github.ginger_bottombar.GingerBottomBarView
 import devit951.github.ginger_bottombar.GingerItem
 import devit951.github.ginger_ui.*
@@ -27,11 +28,11 @@ class MainActivity : AppCompatActivity() {
                     overlayView.setBackgroundColor(color(R.color.colorPrimary))
                     gingerItems = listOf(
                         GingerItem(
-                            android.R.drawable.ic_delete,
-                            android.R.string.cancel,
+                            R.drawable.ic_joke,
+                            R.string.jokes,
                             onClickListener = {
                                 autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "1") {
-                                    EmptyFragment(Color.GREEN)
+                                    JokeFragment()
                                 })
                             }),
                         GingerItem(
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         })
         if (savedInstanceState == null) {
             autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "1") {
-                EmptyFragment(Color.GREEN)
+                JokeFragment()
             })
         }
     }
