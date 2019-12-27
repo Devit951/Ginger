@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import devit951.github.ginger.jokes.JokeFragment
+import devit951.github.ginger.randomcatimage.RandomCatImageFragment
 import devit951.github.ginger_bottombar.GingerBottomBarView
 import devit951.github.ginger_bottombar.GingerItem
 import devit951.github.ginger_ui.*
@@ -36,11 +37,11 @@ class MainActivity : AppCompatActivity() {
                                 })
                             }),
                         GingerItem(
-                            android.R.drawable.ic_dialog_alert,
-                            android.R.string.copyUrl,
+                            R.drawable.ic_cat,
+                            R.string.random_cat,
                             onClickListener = {
                                 autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "2") {
-                                    EmptyFragment(Color.RED)
+                                    RandomCatImageFragment()
                                 })
                             }),
                         GingerItem(
