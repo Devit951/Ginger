@@ -12,6 +12,7 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import androidx.core.animation.doOnEnd
 import androidx.core.animation.doOnStart
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator
 
 class GingerBottomBarView @JvmOverloads constructor(
     context: Context,
@@ -44,7 +45,7 @@ class GingerBottomBarView @JvmOverloads constructor(
                     layoutParams = LinearLayout.LayoutParams(0, WRAP_CONTENT).apply {
                         weight = 1f
                     }
-                    tag = "$index"
+                    tag = "${gingerItems[index].hashCode()}"
                     ivIcon.setImageResource(item.iconRes)
                     defaultIvIconColor = ivIcon.imageTintList
                     defaultTextColor = tvTitle.currentTextColor
@@ -91,6 +92,7 @@ class GingerBottomBarView @JvmOverloads constructor(
                         }
                     })
                 animatorSet.duration = 200
+                animatorSet.interpolator = FastOutSlowInInterpolator()
                 animatorSet.start()
             }
         }
