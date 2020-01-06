@@ -2,9 +2,11 @@ package devit951.github.ginger
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import devit951.github.ginger.jokes.JokeFragment
 import devit951.github.ginger.randomcatimage.RandomCatImageFragment
+import devit951.github.ginger.randomdog.RandomDogFragment
 import devit951.github.ginger_bottombar.GingerBottomBarView
 import devit951.github.ginger_bottombar.GingerItem
 import devit951.github.ginger_ui.*
@@ -45,11 +47,11 @@ class MainActivity : AppCompatActivity() {
                                 })
                             }),
                         GingerItem(
-                            android.R.drawable.ic_input_add,
-                            android.R.string.cut,
+                            R.drawable.ic_dog,
+                            R.string.random_dog,
                             onClickListener = {
                                 autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "3") {
-                                    EmptyFragment(Color.BLUE)
+                                    RandomDogFragment()
                                 })
                             })
                     )
@@ -58,10 +60,8 @@ class MainActivity : AppCompatActivity() {
             }
             frameParams(width = matchParent, height = matchParent)
         })
-        if (savedInstanceState == null) {
-            autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "1") {
-                JokeFragment()
-            })
-        }
+        autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "1") {
+            JokeFragment()
+        })
     }
 }
