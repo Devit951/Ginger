@@ -1,4 +1,4 @@
-package devit951.github.ginger
+package devit951.github.ginger.jokes
 
 import devit951.github.ginger_json_parser.ParserableJson
 import org.json.JSONObject

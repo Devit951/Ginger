@@ -1,7 +1,6 @@
 package devit951.github.ginger.jokes
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.setPadding
 import androidx.fragment.app.Fragment
-import devit951.github.ginger.JokeResponse
 import devit951.github.ginger.R
 import devit951.github.ginger_ui.*
 import devit951.github.gingerhttpclient.Async
