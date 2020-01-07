@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/ginger-bottombar" />
             <option value="$PROJECT_DIR$/ginger-http-client" />
+            <option value="$PROJECT_DIR$/ginger-image-downloader" />
+            <option value="$PROJECT_DIR$/ginger-json-parser" />
             <option value="$PROJECT_DIR$/ginger-ui" />
           </set>
         </option>

@@ -1,2 +1,2 @@
-include ':app', ':ginger-ui', ':ginger-bottombar', ':ginger-http-client'
+include ':app', ':ginger-ui', ':ginger-bottombar', ':ginger-http-client', ':ginger-json-parser', ':ginger-image-downloader'
 rootProject.name='Ginger'

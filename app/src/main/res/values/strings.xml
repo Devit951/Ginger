@@ -5,4 +5,6 @@
     <string name="loading">Loading…</string>
     <string name="random_cat">Random cat</string>
     <string name="next_cat">Next cat</string>
+    <string name="random_dog">Random dog</string>
+    <string name="next_dog">Next dog</string>
 </resources>
