@@ -1,8 +1,6 @@
 package devit951.github.ginger
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import devit951.github.ginger.jokes.JokeFragment
 import devit951.github.ginger.randomcatimage.RandomCatImageFragment
@@ -34,25 +32,25 @@ class MainActivity : AppCompatActivity() {
                             R.drawable.ic_joke,
                             R.string.jokes,
                             onClickListener = {
-                                autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "1") {
+                                autoHideShowFragment(ID_MAIN_ROOT_FRAGMENT, "First") {
                                     JokeFragment()
-                                })
+                                }
                             }),
                         GingerItem(
                             R.drawable.ic_cat,
                             R.string.random_cat,
                             onClickListener = {
-                                autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "2") {
+                                autoHideShowFragment(ID_MAIN_ROOT_FRAGMENT, "Second"){
                                     RandomCatImageFragment()
-                                })
+                                }
                             }),
                         GingerItem(
                             R.drawable.ic_dog,
                             R.string.random_dog,
                             onClickListener = {
-                                autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "3") {
+                                autoHideShowFragment(ID_MAIN_ROOT_FRAGMENT, "Third") {
                                     RandomDogFragment()
-                                })
+                                }
                             })
                     )
                     linearParams(width = matchParent)
@@ -60,8 +58,8 @@ class MainActivity : AppCompatActivity() {
             }
             frameParams(width = matchParent, height = matchParent)
         })
-        autoHideShowFragment(savedFragment(ID_MAIN_ROOT_FRAGMENT, "1") {
+        autoHideShowFragment(ID_MAIN_ROOT_FRAGMENT, "First") {
             JokeFragment()
-        })
+        }
     }
 }

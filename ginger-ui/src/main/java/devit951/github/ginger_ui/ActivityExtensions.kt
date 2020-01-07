@@ -31,11 +31,12 @@ fun <T: Fragment> FragmentActivity.savedFragment(containerId: Int, tag: String, 
     }
 }
 
-fun FragmentActivity.autoHideShowFragment(fragment: Fragment){
+fun <T: Fragment> FragmentActivity.autoHideShowFragment(containerId: Int, tag: String, fragment: () -> T){
+    val savedFragment = savedFragment(containerId, tag, fragment)
     supportFragmentManager.fragments.forEach {
         fragmentTransaction {
             hide(it)
         }
     }
-    fragmentTransaction { show(fragment) }
+    fragmentTransaction { show(savedFragment) }
 }
