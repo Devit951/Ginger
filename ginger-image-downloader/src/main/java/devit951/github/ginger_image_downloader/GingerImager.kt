@@ -11,6 +11,8 @@ internal val threadPool = Executors.newFixedThreadPool(4)
 fun ImageView.load(url: String){
     threadPool.submit {
         val decodedStream = BitmapFactory.decodeStream(URL(url).openStream())
-        setImageBitmap(decodedStream)
+        post {
+            setImageBitmap(decodedStream)
+        }
     }
 }
