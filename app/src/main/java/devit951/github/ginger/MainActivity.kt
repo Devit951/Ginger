@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import devit951.github.ginger.jokes.JokeFragment
 import devit951.github.ginger.randomcatimage.RandomCatImageFragment
 import devit951.github.ginger.randomdog.RandomDogFragment
-import devit951.github.ginger_bottombar.GingerBottomBarView
 import devit951.github.ginger_bottombar.GingerItem
 import devit951.github.ginger_ui.*
 
@@ -19,15 +18,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(frameLayout {
             aVerticalLayout {
+                clipChildren = false
                 aFrameLayout {
                     id = ID_MAIN_ROOT_FRAGMENT
                     linearParams(width = matchParent, height = 0) {
                         weight = 1f
                     }
                 }
-                addView(GingerBottomBarView(context).apply {
-                    overlayView.setBackgroundColor(color(R.color.colorPrimary))
-                    gingerItems = listOf(
+                addView(SettingedGingerBottomBarView(context).apply {
+                    gingerBottomBarView.overlayView.setBackgroundColor(color(R.color.colorPrimary))
+                    gingerBottomBarView.gingerItems = listOf(
                         GingerItem(
                             R.drawable.ic_joke,
                             R.string.jokes,
@@ -53,6 +53,9 @@ class MainActivity : AppCompatActivity() {
                                 }
                             })
                     )
+                    ivArrow.setOnClickListener {
+
+                    }
                     linearParams(width = matchParent)
                 })
             }
