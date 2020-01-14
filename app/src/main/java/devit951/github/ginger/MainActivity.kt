@@ -1,10 +1,12 @@
 package devit951.github.ginger
 
 import android.os.Bundle
+import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
 import devit951.github.ginger.jokes.JokeFragment
 import devit951.github.ginger.randomcatimage.RandomCatImageFragment
 import devit951.github.ginger.randomdog.RandomDogFragment
+import devit951.github.ginger_bottombar.GingerBottomBarView
 import devit951.github.ginger_bottombar.GingerItem
 import devit951.github.ginger_ui.*
 
@@ -21,13 +23,23 @@ class MainActivity : AppCompatActivity() {
                 clipChildren = false
                 aFrameLayout {
                     id = ID_MAIN_ROOT_FRAGMENT
+                    clickable(
+                        imageView {
+                            setImageResource(R.drawable.ic_arrow)
+                            frameParams(width = matchParent, height = dpToPx(25)) {
+                                gravity = Gravity.BOTTOM or Gravity.CENTER
+                            }
+                        }
+                    ){
+                        startActivity(intent<BottomTabListActivity>())
+                    }
                     linearParams(width = matchParent, height = 0) {
                         weight = 1f
                     }
                 }
-                addView(SettingedGingerBottomBarView(context).apply {
-                    gingerBottomBarView.overlayView.setBackgroundColor(color(R.color.colorPrimary))
-                    gingerBottomBarView.gingerItems = listOf(
+                addView(GingerBottomBarView(context).apply {
+                    overlayView.setBackgroundColor(color(R.color.colorPrimary))
+                    gingerItems = listOf(
                         GingerItem(
                             R.drawable.ic_joke,
                             R.string.jokes,
@@ -53,9 +65,6 @@ class MainActivity : AppCompatActivity() {
                                 }
                             })
                     )
-                    ivArrow.setOnClickListener {
-
-                    }
                     linearParams(width = matchParent)
                 })
             }
