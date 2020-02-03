@@ -3,6 +3,7 @@ package devit951.github.ginger
 import android.os.Bundle
 import android.view.Gravity
 import androidx.appcompat.app.AppCompatActivity
+import devit951.github.ginger.bottomtablist.BottomTabListActivity
 import devit951.github.ginger.jokes.JokeFragment
 import devit951.github.ginger.randomcatimage.RandomCatImageFragment
 import devit951.github.ginger.randomdog.RandomDogFragment
